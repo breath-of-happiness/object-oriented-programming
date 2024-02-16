@@ -13,18 +13,16 @@ class Book:
 
 class Library:
     def __init__(self, books=None):
-        if books is None:
-            books = []
-        self.books = books
+        self.books = books or []
+
     def get_next_book_id(self) -> int:
         if not self.books:
             return 1
-        else:
-            return self.books[-1].id + 1
+
+        return self.books[-1].id + 1
 
     def get_index_by_book_id(self, id_: int) -> int:
         for i, b in enumerate(self.books):
             if b.id == id_:
                 return i
-            else:
-                raise ValueError("Книги с запрашиваемым  id не существует")
+            raise ValueError("Книги с запрашиваемым  id не существует")
